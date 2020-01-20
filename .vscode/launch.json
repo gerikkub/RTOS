@@ -1,0 +1,27 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "cortex-debug",
+            "request": "launch",
+            "servertype": "jlink",
+            "cwd": "${workspaceFolder}",
+            "executable": "build/RTOS.elf",
+            "name": "Debug (J-Link)",
+            "device": "STM32F303VC",
+            "interface": "swd",
+            "ipAddress": null,
+            "serialNumber": null,
+            "runToMain": true,
+            "debuggerArgs": "-n",
+            "preRestartCommands": [
+                "file ./build/RTOS.elf",
+                "load",
+                "monitor reset"
+            ]
+        }
+    ]
+}

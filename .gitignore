@@ -1,0 +1,6 @@
+.DS_Store
+
+build/
+*.elf
+*.o
+.gdb_history
