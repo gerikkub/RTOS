@@ -141,8 +141,8 @@ int main(void)
     .time_off = 1700 
   };*/
 
-  create_task(toggle_led, 1024, (void*)&led8Params);
-  create_task(toggle_led, 1024, (void*)&led9Params);
+  create_task(toggle_led, 1, 1024, (void*)&led8Params);
+  create_task(toggle_led, 5, 1024, (void*)&led9Params);
   // create_task(toggle_led, 1024, (void*)&led10Params);
   /*create_task(toggle_led, 1024, (void*)&led15Params);
   create_task(toggle_led, 1024, (void*)&led11Params);
@@ -150,9 +150,9 @@ int main(void)
   create_task(toggle_led, 1024, (void*)&led12Params);
   create_task(toggle_led, 1024, (void*)&led13Params);*/
 
-  create_task(increment_counter, 1024, (void*)&counter_params_0);
-  create_task(increment_counter, 1024, (void*)&counter_params_1);
-  create_task(increment_counter, 1024, (void*)&counter_params_2);
+  create_task(increment_counter, 0, 1024, (void*)&counter_params_0);
+  create_task(increment_counter, 4, 1024, (void*)&counter_params_1);
+  create_task(increment_counter, 1, 1024, (void*)&counter_params_2);
 
   asm("cpsie i");
   yield();

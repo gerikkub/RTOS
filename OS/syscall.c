@@ -60,6 +60,8 @@ void syscall_wait_for_helper(void* void_args) {
     this_task->timer_val = args->time_ms;
     this_task->state = TS_WAIT_TIMER;
 
+    uint8_t this_task_num = current_task_num();
+    delist_task(this_task_num);
 
     SEGGER_RTT_WriteString(0, "Wait syscall: ");
     char num_memory[16];
@@ -82,6 +84,9 @@ void syscall_isr_wait_helper(void* void_args) {
 
         this_task->state = TS_WAIT_ISR;
         isr_notify_wait_task(args->isr, this_task);
+
+        uint8_t this_task_num = current_task_num();
+        delist_task(this_task_num);
 
         SEGGER_RTT_WriteString(0, "IRQ Wait on: ");
         char num_memory[16];

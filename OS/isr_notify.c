@@ -45,12 +45,17 @@ void isr_notify_notify_ISR(uint32_t isr) {
 
     // ASSERT in IRQ context
 
+    asm("cpsid i");
+
     if (g_notify_tasks[isr] != NULL) {
         g_notify_tasks[isr]->state = TS_RUNNABLE;
+        insert_task_default(g_notify_tasks[isr]->task_num);
         g_notify_tasks[isr] = NULL;
     } else {
         g_notify_counts[isr]++;
     }
+
+    asm("cpsie i");
 }
 
 uint32_t isr_notify_get_val(uint32_t isr) {

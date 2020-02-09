@@ -1,6 +1,8 @@
 #ifndef __TASK_H__
 #define __TASK_H__
 
+#include "config.h"
+
 #include <stdint.h>
 #include <stdbool.h>
 
@@ -23,6 +25,9 @@ typedef struct {
     uintptr_t sp;
     TaskState state;
     TaskRegisterState registers;
+    uint8_t priority;
+    uint8_t current_priority;
+    uint8_t task_num;
     bool valid;
 // Only valid in TS_WAIT_TIME state
     uint32_t timer_val;
